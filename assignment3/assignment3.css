@@ -1,0 +1,23 @@
+* {
+    background-color: #27292b;
+    color: white;
+    font-family: 'system-ui';
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.a3-header {
+    margin: auto;
+    margin-top: 50px;
+}
+
+.a3-header h1 {
+    font-weight: 800;
+}
+
+.a3-header h3 {
+    font-weight: 200;
+}
