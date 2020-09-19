@@ -1,38 +1,95 @@
 <html>
 
-        <head>
-                <title>
-                        SWE432 Assignment 3
-                </title>
-                <link rel="stylesheet" href="./assignment3.css">
-                <link rel="stylesheet"
-                      href="https://fonts.googleapis.com/css?family=Montserrat">
-        </head>
+<head>
+        <title>
+                SWE432 Assignment 3
+        </title>
+        <link rel="stylesheet" href="./assignment3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+</head>
 
-        <body>
+<body>
+        <script src="assignment3.js"></script>
 
-                <div class="main-section">
-                        <div class="a3-header">
-                                <h1>
-                                        SWE432-001 Assignment 3
-                                </h1>
-                                <h3>
-                                        Created By: 
-                                        <a href="https://mason.gmu.edu/~afuentel/">
-                                                Alexandro Fuentelzas
-                                        </a>
-                                        ,&nbsp;
-                                        <a href="https://mason.gmu.edu/~dparikh4/">
-                                                Deval Parikh
-                                        </a>
-                                        ,&nbsp;
-                                        <a href="https://mason.gmu.edu/~spolina/">
-                                                Surya Polina
-                                        </a>
-                                </h3>
-                        </div>
+        <div class="main-section">
+                <div class="a3-subsection">
+                        <h1>
+                                SWE432-001 Assignment 3
+                        </h1>
+                        <h3>
+                                Created By:
+                                <a href="https://mason.gmu.edu/~afuentel/">
+                                        Alexandro Fuentelzas
+                                </a>
+                                ,&nbsp;
+                                <a href="https://mason.gmu.edu/~dparikh4/">
+                                        Deval Parikh
+                                </a>
+                                ,&nbsp;
+                                <a href="https://mason.gmu.edu/~spolina/">
+                                        Surya Polina
+                                </a>
+                        </h3>
                 </div>
 
-        </body>
+                <div class="a3-subsection">
+
+
+                        <h1>Define Variables</h1>
+
+                        <h1>Logical Predicates</h1>
+                        <form name="form1" method="post" action="">
+                                <table class="table-form" id=table>
+                                        <tr>
+                                                <th>Boolean Variable 1</th>
+                                                <th>Logical Operator</th>
+                                                <th>Boolean Variable 2</th>
+                                                <th>Logical Operator</th>
+                                                <th><input type=button value="Add Predicate" onClick="addRow()"></th>
+                                        </tr>
+                                        <tr onMouseOver="table.clickedRowIndex=this.rowIndex">
+                                                <td><input type=text name=Boolean1_1[]></td>
+                                                <td>
+                                                        <select type=text name=LogicOp1_1[] id="ops">
+                                                                <optgroup label="Logical Operators">
+                                                                        <option value="volvo">&&</option>
+                                                                        <option value="saab">||</option>
+                                                                </optgroup>
+                                                                <optgroup label="Bitwise Operators">
+                                                                        <option value="mercedes">&</option>
+                                                                        <option value="audi">|</option>
+                                                                </optgroup>
+                                                        </select>
+
+                                                </td>
+                                                <td><input type=text name=Boolean2_1[]></td>
+                                                <td>
+                                                        <select type=text name=LogicOp1_2[] id="ops">
+                                                                <option value="none">None</option>
+                                                                
+                                                                <optgroup label="Logical Operators">
+                                                                        <option value="logic-and">&&</option>
+                                                                        <option value="logic-or">||</option>
+                                                                </optgroup>
+                                                                <optgroup label="Bitwise Operators">
+                                                                        <option value="bitwise-and">&</option>
+                                                                        <option value="bitwise-or">|</option>
+                                                                </optgroup>
+                                                        </select>
+
+                                                </td>
+                                                <td><input type=button name=table_delRow value="Delete Predicate"
+                                                                onClick="delRow()"></td>
+                                        </tr>
+
+                                </table>
+                                <br>
+                                <input type="submit" name="Submit" value="Submit">
+                                &nbsp; &nbsp; <em>(Submission is disabled)</em>
+                        </form>
+                </div>
+        </div>
+
+</body>
 
 </html>

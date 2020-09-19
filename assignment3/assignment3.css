@@ -9,15 +9,15 @@
     flex-direction: column;
 }
 
-.a3-header {
+.a3-subsection {
     margin: auto;
     margin-top: 50px;
 }
 
-.a3-header h1 {
+.a3-subsection h1 {
     font-weight: 800;
 }
 
-.a3-header h3 {
+.a3-subsection h3 {
     font-weight: 200;
 }
