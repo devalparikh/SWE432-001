@@ -36,33 +36,66 @@
 
 
                         <h1>Define Variables</h1>
+                        <form name="form0" method="post" action="">
+                                <table class="table-form" id=var_table>
+                                        <tr>
+                                                <th>Variable</th>
+                                                <th></th>
+                                                <th>Value</th>
+
+                                                <th><input type=button value="Add Variable" onClick="addVarRow()"></th>
+                                        </tr>
+                                        <tr onMouseOver="var_table.clickedRowIndex=this.rowIndex">
+                                                <td><input type=text name=defined_variable_1[] id=defined_variable_1></td>
+                                                <td>=</td>
+                                                <td><input type=text name=defined_value_1[] id=defined_value_1></td>
+<!--    
+                                                <td><input type=button name=table_delRow value="Delete Variable"
+                                                                onClick="delVarRow()"></td> -->
+                                        </tr>
+
+                                </table>
+
+                        </form>
+
 
                         <h1>Logical Predicates</h1>
-                        <form name="form1" method="post" action="">
-                                <table class="table-form" id=table>
+                        <form method="post" action="https://cs.gmu.edu:8443/offutt/servlet/formHandler">
+                                <table class="table-form" id=logic_table>
                                         <tr>
                                                 <th>Boolean Variable 1</th>
                                                 <th>Logical Operator</th>
                                                 <th>Boolean Variable 2</th>
                                                 <th>Logical Operator</th>
-                                                <th><input type=button value="Add Predicate" onClick="addRow()"></th>
+                                                <th><input type=button value="Add Predicate" onClick="addPredRow()"></th>
                                         </tr>
-                                        <tr onMouseOver="table.clickedRowIndex=this.rowIndex">
-                                                <td><input type=text name=Boolean1_1[]></td>
+                                        <tr onMouseOver="logic_table.clickedRowIndex=this.rowIndex">
+                                                <td>
+                                                        <select type=text name=Boolean1_1[] id="ops1">
+                                                                <option value="true">True</option>
+                                                                <option value="false">False</option>
+                                                        </select>
+                                                </td>
                                                 <td>
                                                         <select type=text name=LogicOp1_1[] id="ops">
                                                                 <optgroup label="Logical Operators">
-                                                                        <option value="volvo">&&</option>
-                                                                        <option value="saab">||</option>
+                                                                        <option value="logic-and">&&</option>
+                                                                        <option value="logic-or">||</option>
                                                                 </optgroup>
+
                                                                 <optgroup label="Bitwise Operators">
-                                                                        <option value="mercedes">&</option>
-                                                                        <option value="audi">|</option>
+                                                                        <option value="bitwise-and">&</option>
+                                                                        <option value="bitwise-or">|</option>
                                                                 </optgroup>
                                                         </select>
 
                                                 </td>
-                                                <td><input type=text name=Boolean2_1[]></td>
+                                                <td>
+                                                        <select type=text name=Boolean2_1[] id="ops2">
+                                                                <option value="true">True</option>
+                                                                <option value="false">False</option>
+                                                        </select>
+                                                </td>
                                                 <td>
                                                         <select type=text name=LogicOp1_2[] id="ops">
                                                                 <option value="none">None</option>
@@ -79,13 +112,12 @@
 
                                                 </td>
                                                 <td><input type=button name=table_delRow value="Delete Predicate"
-                                                                onClick="delRow()"></td>
+                                                                onClick="delPredRow()"></td>
                                         </tr>
 
                                 </table>
                                 <br>
                                 <input type="submit" name="Submit" value="Submit">
-                                &nbsp; &nbsp; <em>(Submission is disabled)</em>
                         </form>
                 </div>
         </div>
