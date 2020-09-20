@@ -28,7 +28,7 @@ function addVarRow() {
 
     
 
-    // TODO: Go through each logical predicate row and append to boolean variable options
+    // Go through each logical predicate row and append to boolean variable options
 
     var table = document.getElementById('logic_table');
 
@@ -54,16 +54,22 @@ function addVarRow() {
     }
 
     document.getElementById("defined_variable_1").value = "";
-    // document.getElementById("defined_value_1").value = "";
-
-
-
 
 }
 
 
 function delVarRow() {
     document.getElementById("var_table").deleteRow(document.getElementById("var_table").clickedRowIndex);
+
+    var table = document.getElementById('logic_table');
+
+    for (var r = 1, n = table.rows.length; r < n; r++) {
+        var boolvar1 = document.getElementById('ops1_'+r);
+        var boolvar2 = document.getElementById('ops2_'+r);
+        boolvar1.remove(document.getElementById("var_table").clickedRowIndex);
+        boolvar2.remove(document.getElementById("var_table").clickedRowIndex);
+        
+    }
 }
 
 
@@ -84,7 +90,7 @@ function addPredRow() {
 
 
 
-    // TODO: Go through each defined variable row and populate the boolean variable options
+    // Go through each defined variable row and populate the boolean variable options
 
     var varTable = document.getElementById('var_table');
 
