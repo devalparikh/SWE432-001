@@ -22,7 +22,7 @@ function getVariables() {
 
 
 
-//     var curRowIndex = document.getElementById("var_table").rows.length - 1;
+    // var curRowIndex = document.getElementById("var_table").rows.length - 1;
 //     console.log(curRowIndex)
 //     oCell1.innerHTML = "<input type=text id=defined_variable_"+ curRowIndex+ " name=defined_variable_"+ curRowIndex+ "[]>";
 //     oCell2.innerHTML = "=";
@@ -40,9 +40,11 @@ function addVarRow() {
     var oCell3 = oRow.insertCell(2);
     var oCell4 = oRow.insertCell(3);
 
-    oCell1.innerHTML = document.getElementById('defined_variable_1').value;
+    var curRowIndex = document.getElementById("var_table").rows.length - 1;
+
+    oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" +document.getElementById('defined_variable_1').value + "</p>";
     oCell2.innerHTML = "=";
-    oCell3.innerHTML = document.getElementById('defined_value_1').value;
+    oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" +document.getElementById('defined_value_1').value + "</p>";
     oCell4.innerHTML = "<input type=button value=\" Delete Predicate \" onClick=\"delVarRow()\">";
 
     
@@ -55,8 +57,8 @@ function addVarRow() {
 
     for (var r = 1, n = table.rows.length; r < n; r++) {
 
-        var boolvar1 = document.getElementById('ops1');
-        var boolvar2 = document.getElementById('ops2');
+        var boolvar1 = document.getElementById('ops1_'+r);
+        var boolvar2 = document.getElementById('ops2_'+r);
 
         var newOption1 = document.createElement("option");
         newOption1.text = document.getElementById("defined_variable_1").value;
@@ -100,92 +102,35 @@ function addPredRow() {
 
     var curRowIndex = document.getElementById("logic_table").rows.length - 1;
     console.log(curRowIndex)
-    oCell1.innerHTML = `
-        <select type=text name=Boolean1_"+ curRowIndex+ "[] id="ops">
-            <optgroup label="Defined Variables">
 
-            </optgroup>
-            
-            <optgroup label="Defaults">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-            </optgroup>
-        </select>
-    
-    `;
-
-    oCell2.innerHTML = `
-        <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">                                       
-            <optgroup label="Logical Operators">
-                    <option value="logic-and">&&</option>
-                    <option value="logic-or">||</option>
-            </optgroup>
-            <optgroup label="Bitwise Operators">
-                    <option value="bitwise-and">&</option>
-                    <option value="bitwise-or">|</option>
-            </optgroup>
-        </select>
-    `;
-
-    oCell3.innerHTML = `
-        <select type=text name=Boolean2_"+ curRowIndex+ "[] id="ops">
-            <optgroup label="Defined Variables">
-
-            </optgroup>
-            
-            <optgroup label="Defaults">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-            </optgroup>
-        </select>
-    `;
-
-    oCell4.innerHTML = `
-        <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">
-            <option value="none">None</option>
-
-            <optgroup label="Logical Operators">
-                    <option value="logic-and">&&</option>
-                    <option value="logic-or">||</option>
-            </optgroup>
-            <optgroup label="Bitwise Operators">
-                    <option value="bitwise-and">&</option>
-                    <option value="bitwise-or">|</option>
-            </optgroup>
-        </select>
-    `;
-    oCell5.innerHTML = "<input type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
 
 
     // TODO: Go through each defined variable row and populate the boolean variable options
 
     var varTable = document.getElementById('var_table');
 
-    var bool1Options = `<select type=text name=Boolean1_"+ curRowIndex+ "[] id="ops1">`;
-    var bool2Options = `<select type=text name=Boolean2_"+ curRowIndex+ "[] id="ops2">`;
+    var bool1Options = `<select type=text name=Boolean1_"+` + curRowIndex + `"[] id="ops1_` + curRowIndex + `">`;
+    var bool2Options = `<select type=text name=Boolean2_"+`+ curRowIndex + `"[] id="ops2_` + curRowIndex + `">`;
 
-    for (var r = 1, n = varTable.rows.length; r < n; r++) {
-
-        var curVariable = document.getElementById('defined_variable_'+r).value;
-        var curValue = document.getElementById('defined_value_'+r).value;
+    bool1Options += `<option value="true">True</option>`;
+    bool2Options += `<option value="true">True</option>`;
+    bool1Options += `<option value="false">False</option>`;
+    bool2Options += `<option value="false">False</option>`;
+    for (var r = 2, n = varTable.rows.length; r < n; r++) {
+        console.log('r', r);
+        console.log(document.getElementById('defined_variable_'+r).innerHTML);
+        var curVariable = document.getElementById('defined_variable_'+r).innerHTML;
+        var curValue = document.getElementById('defined_value_'+r).id;
         
         bool1Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
         bool2Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
     }
 
-    oCell1.innerHTML = `
-        <select type=text name=Boolean1_"+ curRowIndex+ "[] id="ops">
-            <optgroup label="Defined Variables">
+    bool1Options += `</select>`;
+    bool2Options += `</select>`;
 
-            </optgroup>
-            
-            <optgroup label="Defaults">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-            </optgroup>
-        </select>
-    
-    `;
+
+    oCell1.innerHTML = bool1Options;
 
     oCell2.innerHTML = `
         <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">                                       
@@ -200,13 +145,7 @@ function addPredRow() {
         </select>
     `;
 
-    oCell3.innerHTML = `
-        <select type=text name=Boolean2_"+ curRowIndex+ "[] id="ops">
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-
-        </select>
-    `;
+    oCell3.innerHTML = bool2Options;
 
     oCell4.innerHTML = `
         <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">
@@ -223,45 +162,6 @@ function addPredRow() {
         </select>
     `;
     oCell5.innerHTML = "<input type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
-
-
-
-
-    
-    // var logicTable = document.getElementById('logic_table');
-
-    // var varTable = document.getElementById('var_table');
-
-    // var boolvar1 = document.getElementById('ops1');
-    // var boolvar2 = document.getElementById('ops2');
-
-    // for (var r = 1, n = varTable.rows.length; r < n; r++) {
-
-    //     var curVariable = document.getElementById('defined_variable_'+r).value;
-    //     var curValue = document.getElementById('defined_value_'+r).value;
-
-    //     var newOption1 = document.createElement("option");
-    //     newOption1.text = curVariable;
-    //     newOption1.value = curValue;
-
-    //     var newOption2 = document.createElement("option");
-    //     newOption2.text = curVariable;
-    //     newOption2.value = curValue;
-
-        
-    //     boolvar1.add(newOption1);
-    //     boolvar2.add(newOption2);
-
-        
-    // }
-
-
-
-
-    
-
-
-
 
 }
 
