@@ -11,27 +11,6 @@ function getVariables() {
 
 }
 
-// function addVarRow() {
-
-//     var oRow = document.getElementById("var_table").insertRow(document.getElementById("var_table").rows.length);
-//     oRow.onmouseover = function () { document.getElementById("var_table").clickedRowIndex = this.rowIndex; };
-//     var oCell1 = oRow.insertCell(0);
-//     var oCell2 = oRow.insertCell(1);
-//     var oCell3 = oRow.insertCell(2);
-//     var oCell4 = oRow.insertCell(3);
-
-
-
-    // var curRowIndex = document.getElementById("var_table").rows.length - 1;
-//     console.log(curRowIndex)
-//     oCell1.innerHTML = "<input type=text id=defined_variable_"+ curRowIndex+ " name=defined_variable_"+ curRowIndex+ "[]>";
-//     oCell2.innerHTML = "=";
-//     oCell3.innerHTML = "<input type=text id=defined_value_"+ curRowIndex+ " name=defined_value_"+ curRowIndex+ "[]>";
-//     oCell4.innerHTML = "<input type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
-
-
-// }
-
 function addVarRow() {
     var oRow = document.getElementById("var_table").insertRow(document.getElementById("var_table").rows.length);
     oRow.onmouseover = function () { document.getElementById("var_table").clickedRowIndex = this.rowIndex; };
@@ -45,7 +24,7 @@ function addVarRow() {
     oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" +document.getElementById('defined_variable_1').value + "</p>";
     oCell2.innerHTML = "=";
     oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" +document.getElementById('defined_value_1').value + "</p>";
-    oCell4.innerHTML = "<input type=button value=\" Delete Predicate \" onClick=\"delVarRow()\">";
+    oCell4.innerHTML = "<input type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
 
     
 
@@ -109,8 +88,8 @@ function addPredRow() {
 
     var varTable = document.getElementById('var_table');
 
-    var bool1Options = `<select type=text name=Boolean1_"+` + curRowIndex + `"[] id="ops1_` + curRowIndex + `">`;
-    var bool2Options = `<select type=text name=Boolean2_"+`+ curRowIndex + `"[] id="ops2_` + curRowIndex + `">`;
+    var bool1Options = `<select type=text name=Boolean1_` + curRowIndex + `[] id="ops1_` + curRowIndex + `">`;
+    var bool2Options = `<select type=text name=Boolean2_`+ curRowIndex + `[] id="ops2_` + curRowIndex + `">`;
 
     bool1Options += `<option value="true">True</option>`;
     bool2Options += `<option value="true">True</option>`;
@@ -120,8 +99,8 @@ function addPredRow() {
         console.log('r', r);
         console.log(document.getElementById('defined_variable_'+r).innerHTML);
         var curVariable = document.getElementById('defined_variable_'+r).innerHTML;
-        var curValue = document.getElementById('defined_value_'+r).id;
-        
+        var curValue = document.getElementById('defined_value_'+r).innerHTML;
+        console.log(curValue);
         bool1Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
         bool2Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
     }
@@ -133,7 +112,7 @@ function addPredRow() {
     oCell1.innerHTML = bool1Options;
 
     oCell2.innerHTML = `
-        <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">                                       
+        <select type=text name=LogicOp1_` + curRowIndex + `[]> id="ops">                                       
             <optgroup label="Logical Operators">
                     <option value="logic-and">&&</option>
                     <option value="logic-or">||</option>
@@ -148,7 +127,7 @@ function addPredRow() {
     oCell3.innerHTML = bool2Options;
 
     oCell4.innerHTML = `
-        <select type=text name=LogicOp2_"+ curRowIndex+ "[]> id="ops">
+        <select type=text name=LogicOp2_` + curRowIndex+ `[]> id="ops">
             <option value="none">None</option>
 
             <optgroup label="Logical Operators">
