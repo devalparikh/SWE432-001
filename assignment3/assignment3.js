@@ -54,7 +54,7 @@ function addVarRow() {
     }
 
     document.getElementById("defined_variable_1").value = "";
-    document.getElementById("defined_value_1").value = "";
+    // document.getElementById("defined_value_1").value = "";
 
 
 
