@@ -1,6 +1,9 @@
 
-// Define Variables Table Functions
+////////////////////////////////////////////
+//    Define Variables Table Functions    //
+////////////////////////////////////////////
 
+// Gets all variables in the table
 function getVariables() {
 
     var table = document.getElementById('var_table');
@@ -11,6 +14,7 @@ function getVariables() {
 
 }
 
+// Adds a new variable to the table of defined variables
 function addVarRow() {
     var oRow = document.getElementById("var_table").insertRow(document.getElementById("var_table").rows.length);
     oRow.onmouseover = function () { document.getElementById("var_table").clickedRowIndex = this.rowIndex; };
@@ -58,7 +62,7 @@ function addVarRow() {
 
 }
 
-
+// Deletes defined variable
 function delVarRow() {
     document.getElementById("var_table").deleteRow(document.getElementById("var_table").clickedRowIndex);
 
@@ -73,9 +77,11 @@ function delVarRow() {
     }
 }
 
+//////////////////////////////////////////////
+//    Logical Predicates Table Functions    //
+//////////////////////////////////////////////
 
-// Logical Predicates Table Functions
-
+// Adds a new logical predicate statement to the predicate table
 function addPredRow() {
     var oRow = document.getElementById("logic_table").insertRow(document.getElementById("logic_table").rows.length);
     oRow.onmouseover = function () { document.getElementById("logic_table").clickedRowIndex = this.rowIndex; };
@@ -88,8 +94,6 @@ function addPredRow() {
 
     var curRowIndex = document.getElementById("logic_table").rows.length - 1;
     console.log(curRowIndex)
-
-
 
     // Go through each defined variable row and populate the boolean variable options
 
@@ -147,10 +151,10 @@ function addPredRow() {
             </optgroup>
         </select>
     `;
-    // oCell5.innerHTML = "<input class='button' type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
+
     oCell5.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px;' onClick='delPredRow()'></button></th>";
 
-    // Force the user to select a logical operator for the next predicate
+    // Force the user to select a logical operator to link the next predicate
     if (curRowIndex > 1) {
 
         var table = document.getElementById('logic_table');
@@ -177,6 +181,7 @@ function addPredRow() {
 
 }
 
+// Deletes a logical predicate statement
 function delPredRow() {
     document.getElementById("logic_table").deleteRow(document.getElementById("logic_table").clickedRowIndex);
 }
