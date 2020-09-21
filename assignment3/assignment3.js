@@ -24,7 +24,8 @@ function addVarRow() {
     oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" +document.getElementById('defined_variable_1').value + "</p>";
     oCell2.innerHTML = "=";
     oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" +document.getElementById('defined_value_1').value + "</p>";
-    oCell4.innerHTML = "<input type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
+    // oCell4.innerHTML = "<input class='button' type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
+    oCell4.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delVarRow()'></button></th>"
 
     
 
@@ -118,7 +119,7 @@ function addPredRow() {
     oCell1.innerHTML = bool1Options;
 
     oCell2.innerHTML = `
-        <select type=text name=LogicOp1_` + curRowIndex + `[]> id="ops">                                       
+        <select type=text name=LogicOp1_` + curRowIndex + `[] id=LogicOp1_` + curRowIndex+ `>                                       
             <optgroup label="Logical Operators">
                     <option value="logic-and">&&</option>
                     <option value="logic-or">||</option>
@@ -133,7 +134,7 @@ function addPredRow() {
     oCell3.innerHTML = bool2Options;
 
     oCell4.innerHTML = `
-        <select type=text name=LogicOp2_` + curRowIndex+ `[]> id="ops">
+        <select type=text name=LogicOp2_` + curRowIndex + `[] id=LogicOp2_` + curRowIndex + `>
             <option value="none">None</option>
 
             <optgroup label="Logical Operators">
@@ -146,7 +147,14 @@ function addPredRow() {
             </optgroup>
         </select>
     `;
-    oCell5.innerHTML = "<input type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
+    // oCell5.innerHTML = "<input class='button' type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
+    oCell5.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delPredRow()'></button></th>";
+
+    // Force the user to select a logical operator for the next predicate
+    if(curRowIndex > 1) {
+        var previousLogicalOperator = document.getElementById("LogicOp2_"+(curRowIndex-1));
+        previousLogicalOperator.remove(0);
+    }
 
 }
 

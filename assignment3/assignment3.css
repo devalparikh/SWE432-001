@@ -2,6 +2,8 @@
     background-color: #27292b;
     color: white;
     font-family: 'system-ui';
+    font-weight: 200;
+
 }
 
 .main-section {
@@ -20,4 +22,34 @@
 
 .a3-subsection h3 {
     font-weight: 200;
+}
+
+.button {
+    margin: 10;
+    margin-left: 30px;
+    font-weight: 400;
+    padding: 5 10 5;
+    border-radius: 10%;
+    border-style: solid;
+    border-width: 1;
+}
+
+.button:hover {
+    background-color: gray;
+}
+
+.submit-button {
+    margin-top: 40px;
+    margin-left: 0px;
+    padding: 10;
+    border-color: white;
+}
+
+.form {
+    margin-bottom: 80px;
+}
+
+.table-form {
+    text-align: center;
+    -webkit-border-horizontal-spacing: 40px;
 }

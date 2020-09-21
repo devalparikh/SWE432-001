@@ -6,6 +6,8 @@
         </title>
         <link rel="stylesheet" href="./assignment3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -36,14 +38,14 @@
 
 
                         <h1>Define Variables</h1>
-                        <form name="form0" method="post" action="">
+                        <form class="form" name="form0" method="post" action="">
                                 <table class="table-form" id=var_table>
                                         <tr>
                                                 <th>Variable</th>
                                                 <th></th>
                                                 <th>Value</th>
 
-                                                <th><input type=button value="Add Variable" onClick="addVarRow()"></th>
+                                                <th><button type=button class="fa fa-plus button" style="font-size:24px" onClick="addVarRow()"></button></th>
                                         </tr>
                                         <tr onMouseOver="var_table.clickedRowIndex=this.rowIndex">
                                                 <td><input type=text name=defined_variable_1[] id=defined_variable_1></td>
@@ -54,9 +56,6 @@
                                                                 <option value="false">False</option>
                                                         </select>
                                                 </td>
-<!--    
-                                                <td><input type=button name=table_delRow value="Delete Variable"
-                                                                onClick="delVarRow()"></td> -->
                                         </tr>
 
                                 </table>
@@ -65,14 +64,14 @@
 
 
                         <h1>Logical Predicates</h1>
-                        <form method="post" action="https://cs.gmu.edu:8443/offutt/servlet/formHandler">
+                        <form class="form" method="post" action="https://cs.gmu.edu:8443/offutt/servlet/formHandler">
                                 <table class="table-form" id=logic_table>
                                         <tr>
                                                 <th>Boolean Variable 1</th>
                                                 <th>Logical Operator</th>
                                                 <th>Boolean Variable 2</th>
                                                 <th>Logical Operator</th>
-                                                <th><input type=button value="Add Predicate" onClick="addPredRow()"></th>
+                                                <th><button type=button class="fa fa-plus button" style="font-size:24px" onClick="addPredRow()"></button></th>
                                         </tr>
                                         <tr onMouseOver="logic_table.clickedRowIndex=this.rowIndex">
                                                 <td>
@@ -82,7 +81,7 @@
                                                         </select>
                                                 </td>
                                                 <td>
-                                                        <select type=text name=LogicOp1_1[] id="ops">
+                                                        <select type=text name=LogicOp1_1[] id="LogicOp1_1">
                                                                 <optgroup label="Logical Operators">
                                                                         <option value="logic-and">&&</option>
                                                                         <option value="logic-or">||</option>
@@ -102,7 +101,7 @@
                                                         </select>
                                                 </td>
                                                 <td>
-                                                        <select type=text name=LogicOp2_1[] id="ops">
+                                                        <select type=text name=LogicOp2_1[] id="LogicOp2_1">
                                                                 <option value="none">None</option>
                                                                 
                                                                 <optgroup label="Logical Operators">
@@ -116,13 +115,12 @@
                                                         </select>
 
                                                 </td>
-                                                <td><input type=button name=table_delRow value="Delete Predicate"
-                                                                onClick="delPredRow()"></td>
+                                                <td><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delPredRow()'></button></td>
                                         </tr>
 
                                 </table>
                                 <br>
-                                <input type="submit" name="Submit" value="Submit">
+                                <input class="submit-button button" type="submit" name="Submit" value="Submit">
                         </form>
                 </div>
         </div>
