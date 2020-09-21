@@ -1,4 +1,10 @@
 
+///////////////////
+//    Globals    //
+///////////////////
+
+var recordedVariableNames = new Set();
+
 ////////////////////////////////////////////
 //    Define Variables Table Functions    //
 ////////////////////////////////////////////
@@ -24,10 +30,22 @@ function addVarRow() {
     var oCell4 = oRow.insertCell(3);
 
     var curRowIndex = document.getElementById("var_table").rows.length - 1;
+    var userInputtedVariableName = document.getElementById('defined_variable_1').value;
+    var userInputtedVariableValue = document.getElementById('defined_value_1').value;
 
-    oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" + document.getElementById('defined_variable_1').value + "</p>";
+    // Check if variable name already exists
+    if(recordedVariableNames.has(userInputtedVariableName)) {
+        console.log(userInputtedVariableName);
+        document.getElementById("varErrorMessage").innerHTML = 'Variable name "' + userInputtedVariableName + '" already exists. Please enter a unique variable name.';
+        return;
+    } else {
+        recordedVariableNames.add(userInputtedVariableName);
+        document.getElementById("varErrorMessage").innerHTML = ''
+    }
+
+    oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" + userInputtedVariableName + "</p>";
     oCell2.innerHTML = "=";
-    oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" + document.getElementById('defined_value_1').value + "</p>";
+    oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" + userInputtedVariableValue + "</p>";
     // oCell4.innerHTML = "<input class='button' type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
     oCell4.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delVarRow()'></button></th>"
 
@@ -36,8 +54,6 @@ function addVarRow() {
     // Go through each logical predicate row and append to boolean variable options
 
     var table = document.getElementById('logic_table');
-
-
 
     for (var r = 1, n = table.rows.length; r < n; r++) {
 
