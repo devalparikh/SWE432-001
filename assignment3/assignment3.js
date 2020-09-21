@@ -5,8 +5,8 @@ function getVariables() {
 
     var table = document.getElementById('var_table');
     for (var r = 1, n = table.rows.length; r < n; r++) {
-        console.log(document.getElementById('defined_variable_'+r).value);
-        console.log(document.getElementById('defined_value_'+r).value);
+        console.log(document.getElementById('defined_variable_' + r).value);
+        console.log(document.getElementById('defined_value_' + r).value);
     }
 
 }
@@ -21,13 +21,13 @@ function addVarRow() {
 
     var curRowIndex = document.getElementById("var_table").rows.length - 1;
 
-    oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" +document.getElementById('defined_variable_1').value + "</p>";
+    oCell1.innerHTML = "<p id='defined_variable_" + curRowIndex + "' >" + document.getElementById('defined_variable_1').value + "</p>";
     oCell2.innerHTML = "=";
-    oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" +document.getElementById('defined_value_1').value + "</p>";
+    oCell3.innerHTML = "<p id='defined_value_" + curRowIndex + "' >" + document.getElementById('defined_value_1').value + "</p>";
     // oCell4.innerHTML = "<input class='button' type=button value=\" Delete Variable \" onClick=\"delVarRow()\">";
     oCell4.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delVarRow()'></button></th>"
 
-    
+
 
     // Go through each logical predicate row and append to boolean variable options
 
@@ -37,8 +37,8 @@ function addVarRow() {
 
     for (var r = 1, n = table.rows.length; r < n; r++) {
 
-        var boolvar1 = document.getElementById('ops1_'+r);
-        var boolvar2 = document.getElementById('ops2_'+r);
+        var boolvar1 = document.getElementById('ops1_' + r);
+        var boolvar2 = document.getElementById('ops2_' + r);
 
         var newOption1 = document.createElement("option");
         newOption1.text = document.getElementById("defined_variable_1").value;
@@ -48,10 +48,10 @@ function addVarRow() {
         newOption2.text = document.getElementById("defined_variable_1").value;
         newOption2.value = document.getElementById('defined_value_1').value;
 
-        
+
         boolvar1.add(newOption1);
         boolvar2.add(newOption2)
-        
+
     }
 
     document.getElementById("defined_variable_1").value = "";
@@ -65,11 +65,11 @@ function delVarRow() {
     var table = document.getElementById('logic_table');
 
     for (var r = 1, n = table.rows.length; r < n; r++) {
-        var boolvar1 = document.getElementById('ops1_'+r);
-        var boolvar2 = document.getElementById('ops2_'+r);
+        var boolvar1 = document.getElementById('ops1_' + r);
+        var boolvar2 = document.getElementById('ops2_' + r);
         boolvar1.remove(document.getElementById("var_table").clickedRowIndex);
         boolvar2.remove(document.getElementById("var_table").clickedRowIndex);
-        
+
     }
 }
 
@@ -96,7 +96,7 @@ function addPredRow() {
     var varTable = document.getElementById('var_table');
 
     var bool1Options = `<select type=text name=Boolean1_` + curRowIndex + `[] id="ops1_` + curRowIndex + `">`;
-    var bool2Options = `<select type=text name=Boolean2_`+ curRowIndex + `[] id="ops2_` + curRowIndex + `">`;
+    var bool2Options = `<select type=text name=Boolean2_` + curRowIndex + `[] id="ops2_` + curRowIndex + `">`;
 
     bool1Options += `<option value="true">True</option>`;
     bool2Options += `<option value="true">True</option>`;
@@ -104,12 +104,12 @@ function addPredRow() {
     bool2Options += `<option value="false">False</option>`;
     for (var r = 2, n = varTable.rows.length; r < n; r++) {
         console.log('r', r);
-        console.log(document.getElementById('defined_variable_'+r).innerHTML);
-        var curVariable = document.getElementById('defined_variable_'+r).innerHTML;
-        var curValue = document.getElementById('defined_value_'+r).innerHTML;
+        console.log(document.getElementById('defined_variable_' + r).innerHTML);
+        var curVariable = document.getElementById('defined_variable_' + r).innerHTML;
+        var curValue = document.getElementById('defined_value_' + r).innerHTML;
         console.log(curValue);
-        bool1Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
-        bool2Options += `<option value="`+ curValue  + `">` + curVariable + `</option>`;
+        bool1Options += `<option value="` + curValue + `">` + curVariable + `</option>`;
+        bool2Options += `<option value="` + curValue + `">` + curVariable + `</option>`;
     }
 
     bool1Options += `</select>`;
@@ -119,7 +119,7 @@ function addPredRow() {
     oCell1.innerHTML = bool1Options;
 
     oCell2.innerHTML = `
-        <select type=text name=LogicOp1_` + curRowIndex + `[] id=LogicOp1_` + curRowIndex+ `>                                       
+        <select type=text name=LogicOp1_` + curRowIndex + `[] id=LogicOp1_` + curRowIndex + `>                                       
             <optgroup label="Logical Operators">
                     <option value="logic-and">&&</option>
                     <option value="logic-or">||</option>
@@ -151,9 +151,33 @@ function addPredRow() {
     oCell5.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delPredRow()'></button></th>";
 
     // Force the user to select a logical operator for the next predicate
-    if(curRowIndex > 1) {
-        var previousLogicalOperator = document.getElementById("LogicOp2_"+(curRowIndex-1));
-        previousLogicalOperator.remove(0);
+    if (curRowIndex > 1) {
+
+        var table = document.getElementById('logic_table');
+
+        var secondToLastRow = table.rows[curRowIndex - 1];
+
+
+        console.log('test', secondToLastRow.cells[3].innerHTML.split('\n'))
+
+        secondToLastRow.cells[3].innerHTML = `
+            ` + secondToLastRow.cells[3].innerHTML.split('\n')[1] + `
+            <optgroup label="Logical Operators">
+                    <option value="logic-and">&amp;&amp;</option>
+                    <option value="logic-or">||</option>
+            </optgroup>
+            <optgroup label="Bitwise Operators">
+                    <option value="bitwise-and">&amp;</option>
+                    <option value="bitwise-or">|</option>
+            </optgroup>
+        </select>
+                
+        `
+
+
+        // var previousLogicalOperator = document.getElementById("LogicOp2_"+(curRowIndex-1));
+        // console.log('removing none from ', curRowIndex-1)
+        // previousLogicalOperator.remove("none");
     }
 
 }
