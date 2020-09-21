@@ -148,7 +148,7 @@ function addPredRow() {
         </select>
     `;
     // oCell5.innerHTML = "<input class='button' type=button value=\" Delete Predicate \" onClick=\"delPredRow()\">";
-    oCell5.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px' onClick='delPredRow()'></button></th>";
+    oCell5.innerHTML = "<th><button type=button class='fa fa-trash button' style='font-size:24px;' onClick='delPredRow()'></button></th>";
 
     // Force the user to select a logical operator for the next predicate
     if (curRowIndex > 1) {
@@ -173,11 +173,6 @@ function addPredRow() {
         </select>
                 
         `
-
-
-        // var previousLogicalOperator = document.getElementById("LogicOp2_"+(curRowIndex-1));
-        // console.log('removing none from ', curRowIndex-1)
-        // previousLogicalOperator.remove("none");
     }
 
 }

@@ -14,6 +14,8 @@
 .a3-subsection {
     margin: auto;
     margin-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .a3-subsection h1 {
@@ -21,6 +23,7 @@
 }
 
 .a3-subsection h3 {
+    margin-top: -20px;
     font-weight: 200;
 }
 
